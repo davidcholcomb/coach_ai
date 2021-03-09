@@ -51,6 +51,39 @@ def get_play_by_play():
 
     return df_play_by_play
 
+def get_box_score():
+    df_box_score = pd.DataFrame()
+    game_id_list = get_game_id()
+
+    for j, i in enumerate(game_id_list):
+        # Here we access the box score player track module through endpoints & assign the class to "data"
+        data = endpoints.boxscoretraditionalv2.BoxScoreTraditionalV2(i) 
+
+        # Our "data" variable now has built in functions such as creating a dataframe for our data
+        df_box_by_game = data.player_stats.get_data_frame()
+        print(f'Traditional Boxscore from game {j+1} of {len(game_id_list)}')
+        df_box_score = pd.concat([df_box_score, df_box_by_game])
+        time.sleep(1.5)
+
+    return df_box_score
+
+
+def get_box_score_scoring():
+    df_box_score_scoring = pd.DataFrame()
+    game_id_list = get_game_id()
+
+    for j, i in enumerate(game_id_list):
+        # Here we access the box score player track module through endpoints & assign the class to "data"
+        data = endpoints.boxscorescoringv2.BoxScoreScoringV2(i) 
+
+        # Our "data" variable now has built in functions such as creating a dataframe for our data
+        df_box_scoring_by_game = data.sql_players_scoring.get_data_frame()
+        print(f'Scoring Boxscore from game {j+1} of {len(game_id_list)}')
+        df_box_score_scoring = pd.concat([df_box_score_scoring, df_box_scoring_by_game])
+        time.sleep(1.5)
+
+    return df_box_score_scoring
+
 
 def main():
     ''' Will check to see if the file exists before fetching data from NBA API'''
@@ -68,6 +101,21 @@ def main():
     else:        
         df_player_tracking = get_player_tracking()
         df_player_tracking.to_csv('../data/player_tracking.csv', index=False)
+    
+    if path.exists('../data/boxscore_traditional.csv'):
+        print('Traditional Boxscore already exists')
+        pass
+    else:        
+        df_box_score = get_box_score()
+        df_box_score.to_csv('../data/boxscore_traditional.csv', index=False)
+    
+    if path.exists('../data/boxscore_scoring.csv'):
+        print('Scoring Boxscore already exists')
+        pass
+    else:        
+        df_box_score = get_box_score_scoring()
+        df_box_score.to_csv('../data/boxscore_scoring.csv', index=False)
+
 
 if __name__ == "__main__":
     main()
