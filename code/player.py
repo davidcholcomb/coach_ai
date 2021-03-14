@@ -4,18 +4,7 @@ class Player:
     def __init__(self):
             
         self.team = team
-    
-    def moveRight(self):
-        self.x = self.x + self.speed
- 
-    def moveLeft(self):
-        self.x = self.x - self.speed
-    
-    def moveUp(self):
-        self.y = self.y + self.speed
- 
-    def moveDown(self):
-        self.y = self.y - self.speed
+        self.player_name = player_name
     
 class Guard(Player):
         def __init__(self):
