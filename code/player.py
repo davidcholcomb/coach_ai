@@ -11,16 +11,24 @@ class Player:
         self._close_range = False
         self._midrange = False
         self._three_point_range = True
+
+        self.steal = random.rantint(0, 3)
+        self.block = random.randint(0, 4)
+        self.shooting_close = random.randint(80, 95)
+        self.shooing_midrange = random.randint(40, 60)
+        self.shooting3pts = random.randint(30, 45)
+        self.stamina = random.randint(70,95)
     
 class Guard(Player):
         def __init__(self):
-            self.max_speed = random.randint(75, 95)
-            self.steal = random.rantint(20, 35)
-            self.block = random.randint(10, 40)
-            self.shooting_close = random.randint(80, 95)
-            self.shooing_midrange = random.randint(40, 60)
-            self.shooting3pts = random.randint(30, 45)
-            self.stamina = random.randint(70,95)
+            for player_i in players:
+                self.player_name = 
+                self.steal = random.rantint(20, 35)
+                self.block = random.randint(10, 40)
+                self.shooting_close = random.randint(80, 95)
+                self.shooing_midrange = random.randint(40, 60)
+                self.shooting3pts = random.randint(30, 45)
+                self.stamina = random.randint(70,95)
 
 class Wing(Player):
         def __init__(self):
