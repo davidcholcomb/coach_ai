@@ -2,10 +2,7 @@
 #https://pythonspot.com/jump-and-run-in-pygame/
 class Player:
     def __init__(self):
-            
-        self.team = team
-        self.player_name = player_name
-        self.jersey_number = jersey_number
+        
         self._is_defended = False
         self._has_ball = False
         self._close_range = False
@@ -22,7 +19,7 @@ class Player:
 class Guard(Player):
         def __init__(self):
             for player_i in players:
-                self.player_name = 
+                self.player_name = 'Luka Doncic'
                 self.steal = random.rantint(20, 35)
                 self.block = random.randint(10, 40)
                 self.shooting_close = random.randint(80, 95)
