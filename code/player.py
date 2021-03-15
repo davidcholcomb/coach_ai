@@ -5,6 +5,12 @@ class Player:
             
         self.team = team
         self.player_name = player_name
+        self.jersey_number = jersey_number
+        self._is_defended = False
+        self._has_ball = False
+        self._close_range = False
+        self._midrange = False
+        self._three_point_range = True
     
 class Guard(Player):
         def __init__(self):
