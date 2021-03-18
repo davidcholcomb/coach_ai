@@ -114,44 +114,12 @@ I created the shot_distr.csv file and took that information into creating the ba
 
 In the Player class I brought in the shot distributions and created attributes such as whether or not a player has the ball or is defended.
 
-I also created the Environment class that 
+I also created the Environment class that established the court and the rules, actions that an agent can take, and rewards for the actions.
 
-#### CONTINUE HERE!!!
+#### Baseline
 
-I fit and scored a Logistic Regression model, which had accuracy scores of 0.85 and a recall score of 0.84 on unseen testing data.
+I ran agents that took random actions in order to establish that the model was functioning and to test to see that the environment and its rules weren't too easy or too difficult to solve.
 
-![Confusion Matrix Logistic Regression](./images/logreg_confusion_table.png)
+#### Q-Learning
 
-This model scored much higher than the baseline model of 50%.
-
-#### Multinomial Naive Bayes
-
-Not using the 'compound' feature because it contains negative values, I fit and scored a Multinomial Naive Bayes model which had accuracy scores of 0.85 and a recall score of 0.84 on testing data.
-
-![Confusion Matrix Multinomial Naive Bayes](./images/mnb_confusion_matrix.png)
-
-Overall this model had the lowest variance between the training and testing data. The overall scores were in line with what was achieved using Logistic Regression.
-
-#### Kernel Support Vector Machine Classifier
-
-I fit and scored a Kernel Support Vector Machine model, with the polynomial kernel function and degrees set to 2. The model had accuracy scores of 0.80 and a recall score of 0.79 on unseen testing data.
-
-![Confusion Matrix SVC](./images/svc_confusion_matrix.png)
-
-Overall this model was overfit and had a worse recall score than the 2 above. Since this is a black box model and you can't interpret it I was not going to use the model as my final unless the recall score was significantly higher.
-    
-## Conclusions and Recommendations:
-
-I chose to go with the Logistic Regression as my final model due to it's interpretability and relatively similar recall scores across the board.
-
-#### Coefficient Explaination
-
-If a document moves up a unit of negative sentiment, they are 1.85 times more likely to be in r/wallstreetbets. Similarly, if a document moves up a score of positive sentiment, they are 2.65 times more likely to be in r/wallstreetbets. This is because r/wallstreetbets on a whole is based on a much more volitile strategy than r/investing. As someone moves up in Neutrality, they are only 0.5 times as lilely to be in r/wallstreetbets.
-
-#### Placing Customers into Investing Strategies based on their Risk Assesment
-
-![Logistic Regression Probability of Post Is r/wallstreetbets](./images/probas_logreg.png)
-
-I used logreg.predict_proba to extract probabilities from the model that the post belonged to the 0 Class (r/investing) or the 1 class (r/wallstreetbets).
-
-Customers would be placed into investment strategies based on the probability that their risk assesment statement would classify as r/investing and r/wallstreetbets, using these percentages as weighting.
+After establishing the random agent model as the baseline I then ran a Q-Learning model for the agents to learn the best policy. 
