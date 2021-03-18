@@ -122,4 +122,14 @@ I ran agents that took random actions in order to establish that the model was f
 
 #### Q-Learning
 
-After establishing the random agent model as the baseline I then ran a Q-Learning model for the agents to learn the best policy. 
+After establishing the random agent model as the baseline I then ran a Q-Learning model for the agents to learn the best policy. After running 250,000 trials the following shot chart was produced from the q-table.
+
+![AI Shot Chart](./images/AI_shot_chart.png)
+
+The AI learned to shoot the ball close to the basket.
+
+## Conclusions and Recommendations
+
+I would like to expand the epsilon exploration hyperparameter in order to see if the AI would take a wider variety of shot attempts.
+
+The ideal would be to expand the number of players to 5 vs. 5 in order to reflect actual basketball scenarios and run different in-game situations such as inbounding plays and end of game scenarios.
